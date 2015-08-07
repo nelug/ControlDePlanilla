@@ -26,4 +26,3 @@ Route::filter('csrf', function()
 });
 
 
-Entrust::routeNeedsRole( 'owner*', array('Owner'), Redirect::to('/') );

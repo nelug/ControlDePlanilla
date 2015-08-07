@@ -26,7 +26,7 @@ class UserController extends Controller {
 		        return 'success';
 			}
 			else
-			{
+		 	{
 			    return $this->user->errors();
 			}
     	}

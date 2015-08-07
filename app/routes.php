@@ -1,7 +1,4 @@
-<?php
-
-User::observe(new \NEkman\ModelLogger\Observer\Logger);
-Producto::observe(new \NEkman\ModelLogger\Observer\Logger);
+<?php 
 
 Route::get('/', 'HomeController@index');
 Route::get('logIn', 'HomeController@login');
@@ -29,10 +26,25 @@ Route::group(array('prefix' => 'user'), function()
         Route::get('create' , 'ClienteController@create' );
         Route::post('create', 'ClienteController@create' );
         Route::post('edit'  , 'ClienteController@edit'   );
-        Route::get('camara'  , 'ClienteController@camara'   );
+        Route::post('delete', 'ClienteController@delete'   );
+        Route::get('camara' , 'ClienteController@camara'   );
     });
 
-} );
+    Route::group(array('prefix' => 'consultas'), function()
+    {
+        Route::get('clientes'   , 'ConsultasController@clientes'   );
+        Route::get('meloneras'  , 'ConsultasController@melonera'   );
+        Route::get('cuadrilas'  , 'ConsultasController@cuadrila'   );
+        Route::get('ventas'     , 'ConsultasController@ventas'     );
+        Route::get('pagos'      , 'ConsultasController@pagos'      );
+
+        Route::get('clientes_dt'   , 'ConsultasController@clientes_dt'   );
+        Route::get('meloneras_dt'  , 'ConsultasController@meloneras_dt'   );
+        Route::get('cuadrilas_dt'  , 'ConsultasController@cuadrilas_dt'   );
+        Route::get('ventas_dt'     , 'ConsultasController@ventas_dt'     );
+        Route::get('pagos_dt'      , 'ConsultasController@pagos_dt'      );
+    });
+});
 
 Route::group(array('prefix' => 'owner'), function()
 {
@@ -48,6 +60,7 @@ Route::group(array('prefix' => 'owner'), function()
         Route::post('add_role', 'UserController@add_role');
         Route::post('delete', 'UserController@delete');
         Route::get('profile', 'UserController@edit_profile');
+        Route::post('profile', 'UserController@edit_profile');
     });
 
     Route::group(array('prefix' => 'user'), function()
@@ -56,5 +69,12 @@ Route::group(array('prefix' => 'owner'), function()
         Route::get('roles/search', 'RolesController@search');
         Route::post('roles/edit', 'RolesController@edit');
     });
-
 });
+
+/*
+Route::get('test',  function(){
+    $user = User::find(1);
+    $user->password = 'admin';
+    $user->save();
+});
+*/

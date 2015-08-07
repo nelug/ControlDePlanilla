@@ -13,7 +13,6 @@ $(function() {
 
 
 function logs_usuarios() {
-
     $.get( "owner/logs/usuarios", function( data ) {
         $('.table').html(data);
     });
@@ -21,7 +20,6 @@ function logs_usuarios() {
 
 
 function users_list() {
-
     $.get( "owner/users", function( data ) {
         makeTable(data, 'owner/user/', 'Usuario');
     });

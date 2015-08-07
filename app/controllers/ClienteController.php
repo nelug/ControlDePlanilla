@@ -12,10 +12,12 @@ class ClienteController extends \BaseController {
 		if (Input::has('_token'))
 		{
 			$model = new Cliente;
-			Input::except('imgBase64');
+			$imagen = Input::get('imgBase64');
+			Input::merge(array('imgBase64' => 'fotos/'.Input::get('dpi')));
+
 			if ($model->_create())
 			{
-				$this->Guardar_Foto();
+				$this->Guardar_Foto($imagen);
 				return 'success';
 			}
 
@@ -27,16 +29,15 @@ class ClienteController extends \BaseController {
 
 	//funcion para guardar la foto en la carpeta fotos
 
-	public function Guardar_Foto()
+	public function Guardar_Foto($rawData)
 	{
-		$rawData = Input::get('imgBase64');
 		$filteredData = explode(',', $rawData);
 
 		$unencoded = base64_decode($filteredData[1]);
 		$dpi =Input::get('dpi');
 		$url = "fotos/{$dpi}";
 
-		$fp = fopen($url.'.png', 'w');
+		$fp = fopen($url.'.jpg', 'w');
 		fwrite($fp, $unencoded);
 		fclose($fp);
 	}

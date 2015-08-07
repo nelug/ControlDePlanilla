@@ -23,7 +23,7 @@
     <div class="tab-content" style="background: white" >
         <div class="tab-pane fade active in" id="tab-informacion" style="background:white !important">
 
-            {{ Form::open(array('data-remote-up','data-success' => 'Perfil Actualizado','url' => 'user/profile', 'method' =>'post', 'role'=>'form', 'class' => 'form-horizontal all')) }}
+            {{ Form::open(array('data-remote-up','data-success' => 'Perfil Actualizado','url' => 'owner/user/profile', 'method' =>'post', 'role'=>'form', 'class' => 'form-horizontal all')) }}
 
             {{ Form::hidden('id', @$user->id) }}
 

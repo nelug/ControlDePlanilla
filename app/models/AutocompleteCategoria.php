@@ -1,17 +1,12 @@
 <?php
 
-class Autocomplete {
+class AutocompleteCategoria {
 
-    public static function get($table, $columns, $plus = null)
+    public static function get($table, $columns, $fk = null)
     {
         $terms = Autocomplete::cleaner();
         $query = DB::table($table)->select($columns);
         array_shift($columns);
-
-        if ($plus != null) 
-        {
-            array_pop($columns);
-        }
 
         $result = [];
 
@@ -20,18 +15,14 @@ class Autocomplete {
             $query = $query->Where(DB::raw('CONCAT(" ",' . implode(",",$columns) . ')'), 'LIKE', '%'. $term .'%');
         }
 
+        if ($fk != null) 
+            $query = $query->WhereRaw($fk);
+
         $query = $query->take(5)->get();
 
         foreach ($query as $q)
         {
-            if ($plus == null) 
-            {
-                $result[] = [ 'id' => $q->id, 'value' => $q->$columns[0] . ' ' . $q->$columns[1] ];
-            }
-            else
-            {
-                $result[] = [ 'id' => $q->id, 'value' => $q->$columns[0] . ' ' . $q->$columns[1] ,'descripcion' => $q->$plus];
-            }
+            $result[] = [ 'id' => $q->id, 'value' => $q->$columns[0]];
         }
 
         $data['suggestions'] = $result;

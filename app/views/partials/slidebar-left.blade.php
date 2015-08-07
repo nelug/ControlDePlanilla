@@ -1,4 +1,4 @@
-<aside id="sidebar-left" class="sidebar-circle">
+<aside id="sidebar-left" class="sidebar-circle sidebar-dark">
 
                 <!-- Start left navigation - profile shortcut -->
                 <div class="sidebar-content">
@@ -73,9 +73,9 @@
                             <span class="arrow"></span>
                         </a>
                         <ul>
-                            <li><a href="javascript:void(0);">Clientes</a></li>
-                            <li><a href="javascript:void(0);">Cuadrillas</span></a></li>
-                            <li><a href="javascript:void(0);">Meloneras</span></a></li>
+                            <li><a href="javascript:void(0);" onclick="mostrarTablaClientes()">Clientes</a></li>
+                            <li><a href="javascript:void(0);" onclick="mostrarTablaCuadrillas()">Cuadrillas</span></a></li>
+                            <li><a href="javascript:void(0);" onclick="mostrarTablaMelonera()">Meloneras</span></a></li>
                             <li><a href="javascript:void(0);">Pagos</span></a></li>
                             <li><a href="javascript:void(0);">Ventas</span></a></li>
                             <li><a href="javascript:void(0);" id="users_list">Usuarios</span></a></li>
