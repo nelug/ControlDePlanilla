@@ -27,6 +27,47 @@ class ClienteController extends \BaseController {
 		return View::make('cliente.create');
 	}
 
+	public function status()
+    {
+    	if (Input::has('_token'))
+        {
+	    	$cliente = Cliente::find(Input::get('id'));
+	    	$cliente->estado = Input::get('estado');
+	    	$cliente->bloqueado = Input::get('bloqueado');
+	    	$cliente->sanjuan = Input::get('sanjuan');
+			
+			if ($cliente->save())
+		    	return 'success';
+	
+			return $cliente->errors();
+    	}
+
+    	$cliente = Cliente::find(Input::get('id'));
+
+    	return View::make('cliente.status', compact('cliente'));
+    }
+
+    public function vender()
+    {
+    	if (Input::has('_token'))
+        {/*
+	    	$cliente = Cliente::find(Input::get('id'));
+	    	$cliente->estado = Input::get('estado');
+	    	$cliente->bloqueado = Input::get('bloqueado');
+	    	$cliente->sanjuan = Input::get('sanjuan');
+			
+			if ($cliente->save())
+		    	return 'success';
+	
+			return $cliente->errors();*/
+
+    	}
+
+    	$cliente = Cliente::find(Input::get('id'));
+
+    	return View::make('cliente.vender', compact('cliente'));
+    }
+
 	//funcion para guardar la foto en la carpeta fotos
 
 	public function Guardar_Foto($rawData)

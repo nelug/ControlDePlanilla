@@ -8,7 +8,7 @@ function crear_cliente() {
 
     $.get( url, function( data ) {
         $('.modal-body').html(data);
-        $('.modal-title').text( 'Crear Cliente');
+        $('.modal-title').html( 'Crear Cliente');
         $('.bs-modal').modal('show');
     });
 }

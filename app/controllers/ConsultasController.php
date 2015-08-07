@@ -20,18 +20,18 @@ class ConsultasController extends \BaseController {
 
 	public function cuadrillas()
 	{
-        return View::make('consultas.cuadrilas');
+        return View::make('consultas.cuadrillas');
 	}
 	
 	public function cuadrillas_dt()
 	{
-		$table = 'cuadrilas';
+		$table = 'cuadrillas';
 
-		$columns = array("cuadrila","melonera");
+		$columns = array("cuadrilla","melonera","caporal");
 
-		$Searchable = array("cuadrilla","melonera");
+		$Searchable = array("cuadrilla","melonera","caporal");
 
-		$Join = " Join meloneras on (melonera_id = merloneras.id)"
+		$Join = " Join meloneras on (melonera_id = meloneras.id)";
 
 		echo TableSearch::get($table, $columns, $Searchable, $Join);
 	}
@@ -43,11 +43,13 @@ class ConsultasController extends \BaseController {
 	
 	public function meloneras_dt()
 	{
-		$table = 'users';
+		$table = 'meloneras';
 
-		$columns = array("username");
+		$columns = array("melonera",
+			"(select count(*) from cuadrillas where melonera_id = meloneras.id) as catidad",
+			"created_at");
 
-		$Searchable = array("username");
+		$Searchable = array("melonera");
 
 		echo TableSearch::get($table, $columns, $Searchable);
 	}
