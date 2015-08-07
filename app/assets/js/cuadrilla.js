@@ -3,12 +3,10 @@ $(function() {
 });
 
 function crear_cuadrilla() {
-
     var url = 'user/cuadrilla/create';
-
     $.get( url, function( data ) {
         $('.modal-body').html(data);
-        $('.modal-title').text( 'Crear Cuadrilla');
+        $('.modal-title').html( 'Crear Cuadrilla');
         $('.bs-modal').modal('show');
     });
 }

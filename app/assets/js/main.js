@@ -4,6 +4,9 @@ $(function() {
     $(document).on("click", "#_create", function(){ _create(this); });
     $(document).on("click", "#_edit", function(){ _edit(this); });
     $(document).on("click", "#_delete", function(){ _delete(this); });
+    $(document).on("click", "#_status", function(){ _status(this); });
+    $(document).on("click", "#_abonar", function(){ _abonar(this); });
+    $(document).on("click", "#_vender", function(){ _vender(this); });
 });
  
 
@@ -117,6 +120,69 @@ function _edit() {
 
     $id  = $('.dataTable tbody .row_selected').attr('id');
     $url = $('.dataTable').attr('url') + 'edit';
+
+    $.ajax({
+        type: "POST",
+        url: $url,
+        data: {id: $id},
+        contentType: 'application/x-www-form-urlencoded',
+        success: function (data) {
+            $('.modal-body').html(data);
+            $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
+            $('.bs-modal').modal('show');
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+};
+
+function _status() {
+
+    $id  = $('.dataTable tbody .row_selected').attr('id');
+    $url = $('.dataTable').attr('url') + 'status';
+
+    $.ajax({
+        type: "POST",
+        url: $url,
+        data: {id: $id},
+        contentType: 'application/x-www-form-urlencoded',
+        success: function (data) {
+            $('.modal-body').html(data);
+            $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
+            $('.bs-modal').modal('show');
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+};
+
+function _abonar() {
+
+    $id  = $('.dataTable tbody .row_selected').attr('id');
+    $url = $('.dataTable').attr('url') + 'abonar';
+
+    $.ajax({
+        type: "POST",
+        url: $url,
+        data: {id: $id},
+        contentType: 'application/x-www-form-urlencoded',
+        success: function (data) {
+            $('.modal-body').html(data);
+            $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
+            $('.bs-modal').modal('show');
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+};
+
+function _vender() {
+
+    $id  = $('.dataTable tbody .row_selected').attr('id');
+    $url = $('.dataTable').attr('url') + 'vender';
 
     $.ajax({
         type: "POST",

@@ -1,4 +1,4 @@
-<?php 
+<?php  
 
 Route::get('/', 'HomeController@index');
 Route::get('logIn', 'HomeController@login');
@@ -26,6 +26,9 @@ Route::group(array('prefix' => 'user'), function()
         Route::get('create' , 'ClienteController@create' );
         Route::post('create', 'ClienteController@create' );
         Route::post('edit'  , 'ClienteController@edit'   );
+        Route::post('status', 'ClienteController@status'   );
+        Route::post('abonar', 'ClienteController@abonar'   );
+        Route::post('vender', 'ClienteController@vender'   );
         Route::post('delete', 'ClienteController@delete'   );
         Route::get('camara' , 'ClienteController@camara'   );
     });
@@ -33,14 +36,14 @@ Route::group(array('prefix' => 'user'), function()
     Route::group(array('prefix' => 'consultas'), function()
     {
         Route::get('clientes'   , 'ConsultasController@clientes'   );
-        Route::get('meloneras'  , 'ConsultasController@melonera'   );
-        Route::get('cuadrilas'  , 'ConsultasController@cuadrila'   );
+        Route::get('meloneras'  , 'ConsultasController@meloneras'   );
+        Route::get('cuadrillas' , 'ConsultasController@cuadrillas'   );
         Route::get('ventas'     , 'ConsultasController@ventas'     );
         Route::get('pagos'      , 'ConsultasController@pagos'      );
 
         Route::get('clientes_dt'   , 'ConsultasController@clientes_dt'   );
         Route::get('meloneras_dt'  , 'ConsultasController@meloneras_dt'   );
-        Route::get('cuadrilas_dt'  , 'ConsultasController@cuadrilas_dt'   );
+        Route::get('cuadrillas_dt'  , 'ConsultasController@cuadrillas_dt'   );
         Route::get('ventas_dt'     , 'ConsultasController@ventas_dt'     );
         Route::get('pagos_dt'      , 'ConsultasController@pagos_dt'      );
     });

@@ -41,6 +41,8 @@
                         </a>
                         <ul>
                             <li><a href="javascript:void(0);" id="crear_cliente">Crear Cliente</a></li>
+                            <li><a href="javascript:void(0);" >Vender</a></li>
+                            <li><a href="javascript:void(0);" >Abonar Cliente</a></li>
                         </ul>
                     </li>
 

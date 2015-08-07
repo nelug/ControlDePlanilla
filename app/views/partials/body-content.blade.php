@@ -104,7 +104,7 @@
             <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
             <h4 class="modal-title" id="modal-title-profile"></h4>
           </div>
-          <div class="modal-body" id="modal-body-profile" style="height: 420px !important"></div>
+          <div class="modal-body" id="modal-body-profile"></div>
         </div>
       </div>
     </div>

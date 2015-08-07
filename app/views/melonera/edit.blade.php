@@ -1,9 +1,9 @@
 
 {{ Form::_open('Melonera Actualizada') }}
 	
-	{{ Form::hidden('id', @$melonera->id) }}
+	{{ Form::hidden('id', @$model->id) }}
 
-    {{ Form::_text('melonera',$melonera->melonera) }}
+    {{ Form::_text('melonera',$model->melonera) }}
   	
   	{{ Form::hidden('user_id', Auth::user()->id ) }}
 

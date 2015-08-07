@@ -8,7 +8,7 @@ function crear_melonera() {
 
     $.get( url, function( data ) {
         $('.modal-body').html(data);
-        $('.modal-title').text( 'Crear Melonera');
+        $('.modal-title').html( 'Crear Melonera');
         $('.bs-modal').modal('show');
     });
 }
