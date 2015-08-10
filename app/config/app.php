@@ -125,7 +125,6 @@ return array(
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Bllim\Datatables\DatatablesServiceProvider',
 		'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
-		'NEkman\ModelLogger\ModelLoggerServiceProvider',
 
 	),
 
@@ -198,7 +197,6 @@ return array(
 		'Carbon'            => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
         'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
         'ValidatorAssistant' => 'Fadion\ValidatorAssistant\ValidatorAssistant',
-
 	),
 
 );

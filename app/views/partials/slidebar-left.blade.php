@@ -41,8 +41,8 @@
                         </a>
                         <ul>
                             <li><a href="javascript:void(0);" id="crear_cliente">Crear Cliente</a></li>
-                            <li><a href="javascript:void(0);" >Vender</a></li>
-                            <li><a href="javascript:void(0);" >Abonar Cliente</a></li>
+                            <!-- <li><a href="javascript:void(0);" >Vender</a></li>
+                            <li><a href="javascript:void(0);" >Abonar Cliente</a></li> -->
                         </ul>
                     </li>
 
@@ -65,6 +65,7 @@
                         </a>
                         <ul>
                             <li><a href="javascript:void(0);" id="crear_melonera">Crear Melonera</a></li>
+                            <li><a href="javascript:void(0);" onclick="imprimirMelonera()">Imprimir Melonera</a></li>
                         </ul>
                     </li>
 
@@ -78,8 +79,8 @@
                             <li><a href="javascript:void(0);" onclick="mostrarTablaClientes()">Clientes</a></li>
                             <li><a href="javascript:void(0);" onclick="mostrarTablaCuadrillas()">Cuadrillas</span></a></li>
                             <li><a href="javascript:void(0);" onclick="mostrarTablaMelonera()">Meloneras</span></a></li>
-                            <li><a href="javascript:void(0);">Pagos</span></a></li>
-                            <li><a href="javascript:void(0);">Ventas</span></a></li>
+                            <li><a href="javascript:void(0);" onclick="mostrarTablaPagos()">Pagos</span></a></li>
+                            <li><a href="javascript:void(0);" onclick="mostrarTablaVentas()">Ventas</span></a></li>
                             <li><a href="javascript:void(0);" id="users_list">Usuarios</span></a></li>
                         </ul>
                     </li>

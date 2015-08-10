@@ -15,3 +15,15 @@ function mostrarTablaMelonera() {
         makeTable(data, 'user/melonera/', 'Meloneras');
     });
 } 
+
+function mostrarTablaVentas() {
+    $.get( "user/consultas/ventas", function( data ) {
+        makeTable(data, ' ', 'Meloneras');
+    });
+} 
+
+function mostrarTablaPagos() {
+    $.get( "user/consultas/pagos", function( data ) {
+        makeTable(data, ' ', 'Meloneras');
+    });
+} 

@@ -12,9 +12,7 @@
         "bllim/datatables": "*",
 		"pusher/pusher-php-server": "~2.0",
         "laravelrus/localized-carbon": "1.*",
-        "fadion/validator-assistant": "dev-master",
-		"nekman/laravel-model-logger": "1.*"
-
+        "fadion/validator-assistant": "dev-master"
 	},
 	"require-dev": {
     "way/generators": "~2.0"

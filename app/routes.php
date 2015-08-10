@@ -12,6 +12,8 @@ Route::group(array('prefix' => 'user'), function()
         Route::get('create' , 'MeloneraController@create' );
         Route::post('create', 'MeloneraController@create' );
         Route::post('edit'  , 'MeloneraController@edit'   );
+        Route::get('imprimirMelonera'              , 'MeloneraController@imprimirMelonera'   );
+        Route::get('imprimirMeloneraSeleccionada'  , 'MeloneraController@imprimirMeloneraSeleccionada'   );
     });
 
     Route::group(array('prefix' => 'cuadrilla'), function()

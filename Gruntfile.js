@@ -89,6 +89,7 @@ module.exports = function(grunt) {
                 './app/assets/components/bower/jquery/jquery.js',
                 './app/assets/js/plugins/jquery.cookie.js',
                 './app/assets/js/plugins/autocomplete.js',
+                './app/assets/js/plugins/jqprint.js',
                 './app/assets/components/bower/bootstrap/dist/js/bootstrap.js',
                 './app/assets/components/bower/jquery-nicescroll/jquery.nicescroll.js',
                 './app/assets/js/jpreloader-v2/js/jpreloader.js',

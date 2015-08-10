@@ -24,7 +24,7 @@ class CreateTableClientes extends Migration {
 	        $table->string('direccion_actual', 200);
 	        $table->string('telefono', 15);
 	        $table->decimal('saldo',8, 2);
-	        $table->string('foto', 200);
+	        $table->string('imgBase64', 200);
 	        $table->tinyInteger('estado')->default(1);
 	        $table->tinyInteger('bloqueado')->default(0);
 	        $table->tinyInteger('sanjuan')->default(0);
