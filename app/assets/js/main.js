@@ -170,7 +170,7 @@ function _abonar() {
         contentType: 'application/x-www-form-urlencoded',
         success: function (data) {
             $('.modal-body').html(data);
-            $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
+            $('.modal-title').text( 'Abonar al  ' + $('.dataTable').attr('title') );
             $('.bs-modal').modal('show');
         },
         error: function (request, status, error) {
@@ -191,7 +191,7 @@ function _vender() {
         contentType: 'application/x-www-form-urlencoded',
         success: function (data) {
             $('.modal-body').html(data);
-            $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
+            $('.modal-title').text( 'Vender al  ' + $('.dataTable').attr('title') );
             $('.bs-modal').modal('show');
         },
         error: function (request, status, error) {

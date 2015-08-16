@@ -1,7 +1,6 @@
 <?php
-use \NEkman\ModelLogger\Contract\Logable;
 
-class Melonera extends \BaseModel implements Logable{
+class Melonera extends \BaseModel {
 
 	protected $table = 'meloneras';
 
@@ -15,11 +14,6 @@ class Melonera extends \BaseModel implements Logable{
     public function users()
     {
         return $this->belongsTo('User');    
-    }
-
-	public function getLogName()
-    {
-        return $this->id;
     }
 
 }
