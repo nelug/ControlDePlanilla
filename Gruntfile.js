@@ -111,6 +111,7 @@ module.exports = function(grunt) {
                 './app/assets/js/melonera.js',
                 './app/assets/js/data-remote.js',
                 './app/assets/js/cliente.js',
+                './app/assets/js/reportes.js',
                 './app/assets/components/bower/pusher/dist/pusher.js',
               ],
               dest: './public/js/main.js',

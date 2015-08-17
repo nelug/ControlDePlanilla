@@ -11,11 +11,13 @@ class ConsultasController extends \BaseController {
 	{
 		$table = 'clientes';
 
-		$columns = array("dpi","nombre","apellido","direccion_actual","saldo");
+		$columns = array("dpi","nombre","apellido","direccion_actual",'cuadrilla',"saldo");
 
-		$Searchable = array("dpi","nombre","apellido","direccion_actual","saldo");
+		$Searchable = array("dpi","nombre","apellido","direccion_actual","saldo",'cuadrilla');
 
-		echo TableSearch::get($table, $columns, $Searchable);
+		$join = "Join cuadrillas on (cuadrillas.id = cuadrilla_id) ";
+
+		echo TableSearch::get($table, $columns, $Searchable , $join);
 	}
 
 	public function cuadrillas()
@@ -64,6 +66,7 @@ class ConsultasController extends \BaseController {
 		$table = 'ventas';
 
 		$columns = array(
+			"CONCAT_WS(' ',users.nombre,users.apellido) as usuario",
 			"CONCAT_WS(' ',clientes.nombre,clientes.apellido) as cliente",
 			"clientes.direccion as direccion",
 			"meloneras.melonera as melonera",
@@ -81,11 +84,14 @@ class ConsultasController extends \BaseController {
 			"ventas.monto",
 			"ventas.created_at");
 
-		$Join  = " JOIN clientes ON (ventas.cliente_id = clientes.id) ";
+		$Join  = " JOIN users ON (ventas.user_id = users.id) ";
+		$Join .= " JOIN clientes ON (ventas.cliente_id = clientes.id) ";
 		$Join .= " JOIN cuadrillas ON (cuadrilla_id = cuadrillas.id) ";
 		$Join .= " JOIN meloneras ON (melonera_id = meloneras.id) ";
 
-		echo TableSearch::get($table, $columns, $Searchable, $Join);
+		$where = " ventas.monto > 0 ";
+
+		echo TableSearch::get($table, $columns, $Searchable, $Join, $where);
 	}
 
 	public function pagos()
@@ -98,6 +104,7 @@ class ConsultasController extends \BaseController {
 		$table = 'pagos';
 
 		$columns = array(
+			"CONCAT_WS(' ',users.nombre,users.apellido) as usuario",
 			"CONCAT_WS(' ',clientes.nombre,clientes.apellido) as cliente",
 			"clientes.direccion_actual as direccion",
 			"meloneras.melonera as melonera",
@@ -117,11 +124,13 @@ class ConsultasController extends \BaseController {
 			"pagos.monto",
 			"pagos.created_at");
 
-		$Join  = " JOIN clientes ON (pagos.cliente_id = clientes.id) ";
+		$Join  = " JOIN users ON (pagos.user_id = users.id) ";
+		$Join .= " JOIN clientes ON (pagos.cliente_id = clientes.id) ";
 		$Join .= " JOIN cuadrillas ON (cuadrilla_id = cuadrillas.id) ";
 		$Join .= " JOIN meloneras ON (melonera_id = meloneras.id) ";
+		$where = " pagos.monto > 0 ";
 
-		echo TableSearch::get($table, $columns, $Searchable, $Join);
+		echo TableSearch::get($table, $columns, $Searchable, $Join, $where);
 	}
 
 

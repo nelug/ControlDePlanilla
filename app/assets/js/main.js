@@ -190,9 +190,14 @@ function _vender() {
         data: {id: $id},
         contentType: 'application/x-www-form-urlencoded',
         success: function (data) {
-            $('.modal-body').html(data);
-            $('.modal-title').text( 'Vender al  ' + $('.dataTable').attr('title') );
-            $('.bs-modal').modal('show');
+
+            if(data.success == true ){
+                $('.modal-body').html(data.view);
+                $('.modal-title').text( 'Vender al  ' + $('.dataTable').attr('title') );
+                return $('.bs-modal').modal('show');
+            }
+            msg.warning(data, 'Advertencia!');
+
         },
         error: function (request, status, error) {
             alert(request.responseText);

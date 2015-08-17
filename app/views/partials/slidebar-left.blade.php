@@ -72,6 +72,18 @@
                     <li class="submenu">
                         <a href="javascript:void(0);">
                             <span class="icon"><i class="fa fa-file-o"></i></span>
+                            <span class="text">Reportes</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul>
+                            <li><a href="javascript:void(0);" onclick="reporteGeneral()">General</a></li>
+                            <li><a href="javascript:void(0);" onclick="chartVentasPorUsuario()">Ventas Por Usuario</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);">
+                            <span class="icon"><i class="fa fa-file-o"></i></span>
                             <span class="text">Consultas</span>
                             <span class="arrow"></span>
                         </a>

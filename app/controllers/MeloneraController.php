@@ -10,7 +10,7 @@ class MeloneraController extends \BaseController {
 	public function imprimirMeloneraSeleccionada()
 	{
 		$cuadrilla = Cuadrilla::with('meloneras','clientes')
-		->where('melonera_id','=',Input::get('melonera_id'))->get();
+		->where('melonera_id','=',Input::get('melonera_id'))->orderBy('correlativo')->get();
 		return View::make('melonera.imprimirMeloneraSeleccionada', compact('cuadrilla'))->render();
 	}
 }

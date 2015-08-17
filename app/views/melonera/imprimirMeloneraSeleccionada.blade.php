@@ -1,6 +1,8 @@
 
 @foreach(@$cuadrilla as $data)
-	@if(count(@$data->clientes))
+<?php $verificar = Cliente::where('saldo','>','0')
+		->where('cuadrilla_id','=', $data->id)->get(); ?>
+	@if(count($verificar) > 0)
 		<?php $total = 0; ?>
 		<div align="center">
 			<h2> {{ $data->cuadrilla }} {{ $data->caporal }} </h2> 
@@ -8,10 +10,12 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th width="20%" style="text-align: center;">DPI</th>
-					<th width="50%" style="text-align: center;">Nombre</th>
+					<th width="15%" style="text-align: center;">DPI</th>
+					<th width="45%" style="text-align: center;">Nombre</th>
+					<th width="10%" style="text-align: center;">Telefono</th>
 					<th width="10%" style="text-align: center;">Saldo</th>
-					<th width="20%" style="text-align: center;">Pago</th>
+					<th width="10%" style="text-align: center;">Dias</th>
+					<th width="10%" style="text-align: center;">Pago</th>
 				</tr>
 			</thead>
 			<tbody>

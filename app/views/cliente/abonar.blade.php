@@ -42,7 +42,8 @@
 	</div>
 	<div class="col-md-6">
 		<strong>Deuda: {{$cliente->saldo}}</strong><br>
-		<strong>Dias del ultimo Pago : {{(@$dia == null)? '0':@$dia;}}</strong>
+		<strong>Dias del ultimo Pago : {{(@$dia == null)? '0':@$dia;}}</strong><br>
+		<strong>Dias de la ultima Venta : {{(@$dia_v == null)? '0':@$dia_v;}}</strong>
 	</div>
 </div>
 {{ Form::_submit('Enviar') }}

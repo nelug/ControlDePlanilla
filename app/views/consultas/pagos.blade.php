@@ -6,14 +6,15 @@ $(document).ready(function()
 
     $('#example').dataTable({
         "aoColumnDefs": [
-            {"sClass": "widthM",              "sTitle": "Cliente",      "aTargets": [0]},
-            {"sClass": "widthM",              "sTitle": "Direccion",    "aTargets": [1]},
-            {"sClass": "widthS",              "sTitle": "Melonera",    	"aTargets": [2]},
-            {"sClass": "widthS",              "sTitle": "Cuadrilla",  	"aTargets": [3]},
-            {"sClass": "widthS",              "sTitle": "S. Anterior",  "aTargets": [4]},
-            {"sClass": "widthS",              "sTitle": "Monto",        "aTargets": [5]},
-            {"sClass": "widthS",              "sTitle": "S. Actual",  	"aTargets": [6]},
-            {"sClass": "widthM",              "sTitle": "Fecha",  		"aTargets": [7]},
+            {"sClass": "widthM",              "sTitle": "Usuario",      "aTargets": [0]},
+            {"sClass": "widthM",              "sTitle": "Cliente",      "aTargets": [1]},
+            {"sClass": "widthM",              "sTitle": "Direccion",    "aTargets": [2]},
+            {"sClass": "widthS",              "sTitle": "Melonera",    	"aTargets": [3]},
+            {"sClass": "widthS",              "sTitle": "Cuadrilla",  	"aTargets": [4]},
+            {"sClass": "widthS",              "sTitle": "S. Anterior",  "aTargets": [5]},
+            {"sClass": "widthS",              "sTitle": "Monto",        "aTargets": [6]},
+            {"sClass": "widthS",              "sTitle": "S. Actual",  	"aTargets": [7]},
+            {"sClass": "widthM",              "sTitle": "Fecha",  		"aTargets": [8]},
         ],
 
         "fnDrawCallback": function( oSettings ) {

@@ -51,6 +51,15 @@ Route::group(array('prefix' => 'user'), function()
     });
 });
 
+Route::group(array('prefix' => 'admin'), function()
+{
+    Route::group(array('prefix' => 'reportes'), function()
+    {
+        Route::get('general', 'ReporteController@general');
+        Route::get('VentasPorUsuario', 'ReporteController@VentasPorUsuario');
+    });
+});
+
 Route::group(array('prefix' => 'owner'), function()
 {
     Route::get('users', 'UserController@index');

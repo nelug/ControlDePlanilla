@@ -9,8 +9,9 @@ $(document).ready(function()
             {"sClass": "widthM",              "sTitle": "DPI",       "aTargets": [0]},
             {"sClass": "widthM",              "sTitle": "Nombre",    "aTargets": [1]},
             {"sClass": "widthM",              "sTitle": "Apellido",  "aTargets": [2]},
-            {"sClass": "widthL",  "sTitle": "Direccion", "aTargets": [3]},
-            {"sClass": "align_right widthS",  "sTitle": "Deuda",     "aTargets": [4]},
+            {"sClass": "widthL",              "sTitle": "Direccion", "aTargets": [3]},
+            {"sClass": "align_right widthS",  "sTitle": "Cuadrilla", "aTargets": [4]},
+            {"sClass": "align_right widthS",  "sTitle": "Deuda",     "aTargets": [5]},
         ],
 
         "fnDrawCallback": function( oSettings ) {

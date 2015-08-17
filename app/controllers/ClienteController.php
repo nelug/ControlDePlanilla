@@ -17,7 +17,9 @@ class ClienteController extends \BaseController {
 
 			if ($model->_create())
 			{
-				$this->Guardar_Foto($imagen);
+                if($imagen != "")
+				    $this->Guardar_Foto($imagen);
+
 				return 'success';
 			}
 
@@ -60,6 +62,17 @@ class ClienteController extends \BaseController {
         	$venta->cliente_id = Input::get('cliente_id');
         	$venta->monto = Input::get('monto');
 
+            if ($cliente->saldo <= 0.00) {
+                $pago = new Pago;
+                $pago->user_id = Auth::user()->id;
+                $pago->cliente_id = Input::get('cliente_id');
+                $pago->saldo_anterior = 0 ;
+                $pago->monto = 0 ;
+                $pago->saldo_actual = 0 ;
+                $pago->save();
+
+            }
+
         	if ($venta->save())
         	{
 		    	$cliente->saldo = $cliente->saldo + Input::get('monto');
@@ -71,16 +84,30 @@ class ClienteController extends \BaseController {
 		    return 'success';
     	}
 
+
     	$cliente = Cliente::find(Input::get('id'));
 
+        if ($cliente->estado == 0) 
+            return 'no se le puede vender a este cliente porque esta Inactivo';
+
+        else if ($cliente->bloqueado == 1) 
+            return 'no se le puede vender a este cliente porque esta Bloqueado';    
+        
     	$dias = DB::table('pagos')->select(DB::raw("monto ,DATEDIFF(current_date,max(created_at)) as dias"))
     	->where('cliente_id','=', Input::get('id'))->first();
 
-    	$dia = $dias->dias;
+        $dias_v = DB::table('ventas')->select(DB::raw("monto ,DATEDIFF(current_date,max(created_at)) as dias"))
+        ->where('cliente_id','=', Input::get('id'))->first();
+
+        $dia = $dias->dias;
+    	$dias_v = $dias->dias;
     	if ($cliente->saldo <= 0)
     		$dia = 0 ;  
+    	return Response::json(array(
+            'success' => true,
+            'view'   => View::make('cliente.vender', compact('cliente' , 'dia' ,'dias_v'))->render()
+        ));
 
-    	return View::make('cliente.vender', compact('cliente' , 'dia'));
     }
 
 
@@ -115,13 +142,16 @@ class ClienteController extends \BaseController {
     	$cliente = Cliente::find(Input::get('id'));
     	$dias = DB::table('pagos')->select(DB::raw("DATEDIFF(current_date,max(created_at)) as dias"))
     	->where('cliente_id','=', Input::get('id'))->first();
+        $dias_v = DB::table('ventas')->select(DB::raw("monto ,DATEDIFF(current_date,max(created_at)) as dias"))
+        ->where('cliente_id','=', Input::get('id'))->first();
 
     	$dia = $dias->dias;
+        $dias_v = $dias->dias;
     	if ($cliente->saldo <= 0)
     		$dia = 0 ;  
     		
 
-    	return View::make('cliente.abonar', compact('cliente','dia'));
+    	return View::make('cliente.abonar', compact('cliente','dia','dias_v'));
     }
 
 	//funcion para guardar la foto en la carpeta fotos
