@@ -11,8 +11,8 @@
 	<thead>
 		<tr>
 			<th width="15%" style="text-align: center;">DPI</th>
-			<th width="45%" style="text-align: center;">Nombre</th>
-			<th width="10%" style="text-align: center;">Direccion</th>
+			<th width="30%" style="text-align: center;">Nombre</th>
+			<th width="25%" style="text-align: center;">Direccion</th>
 			<th width="10%" style="text-align: center;">Telefono</th>
 			<th width="10%" style="text-align: center;">Saldo</th>
 			<th width="10%" style="text-align: center;">Dias</th>
@@ -29,7 +29,7 @@
 		<tr>
 			<td> {{ $cliente->dpi }} </td>
 			<td> {{ $cliente->nombre . ' ' . $cliente->apellido }} </td>
-			<td> {{ $cliente->direccion}} </td>
+			<td> {{ $cliente->direccion_actual}} </td>
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
 			<td style="text-align: right;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
