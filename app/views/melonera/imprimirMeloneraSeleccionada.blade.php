@@ -5,7 +5,7 @@
 @if(count($verificar) > 0)
 <?php $total = 0; ?>
 <div align="center">
-	<h2> {{ $data->cuadrilla }} {{ $data->caporal }} </h2> 
+	<h3> {{ $data->cuadrilla }} {{ $data->caporal }} </h3> 
 </div> 
 <table class="table">
 	<thead>
