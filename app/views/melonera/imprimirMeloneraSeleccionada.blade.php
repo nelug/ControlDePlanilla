@@ -14,9 +14,9 @@
 			<th width="23%" style="text-align: center;">Nombre</th>
 			<th width="23%" style="text-align: center;">Direccion</th>
 			<th width="9%" style="text-align: center;">Telefono</th>
-			<th width="9%" style="text-align: center;">Saldo</th>
-			<th width="8%" style="text-align: center;">Dias</th>
-			<th width="14%" style="text-align: center;">Pago</th>
+			<th width="10%" style="text-align: center;">Saldo</th>
+			<th width="9%" style="text-align: center;">Dias</th>
+			<th width="12%" style="text-align: center;">Pago</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -32,7 +32,7 @@
 			<td> {{ $cliente->direccion_actual}} </td>
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
-			<td style="text-align: center;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
+			<td style="text-align: right;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
 			<td></td>
 		</tr>
 		<?php $total = $total + $cliente->saldo ?>
