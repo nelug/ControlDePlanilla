@@ -26,7 +26,7 @@
 		->select(DB::raw("DATEDIFF(current_date,max(created_at)) as dias"))
 		->where('cliente_id','=', $cliente->id)->first(); 
 		?>
-		<tr>
+		<tr class="imprimirMelonera">
 			<td> {{ $cliente->dpi }} </td>
 			<td> {{ $cliente->nombre . ' ' . $cliente->apellido }} </td>
 			<td> {{ $cliente->direccion_actual}} </td>
@@ -67,5 +67,10 @@
 			display:block; 
 			page-break-before:always;
 		}
+	}
+
+	.imprimirMelonera td{
+		line-height: 100% !important;
+		font-size: 11px !important;
 	}
 </style>

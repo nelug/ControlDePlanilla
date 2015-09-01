@@ -66,6 +66,7 @@ class ConsultasController extends \BaseController {
 		$table = 'ventas';
 
 		$columns = array(
+			"clientes.dpi as dpi",
 			"CONCAT_WS(' ',users.nombre,users.apellido) as usuario",
 			"CONCAT_WS(' ',clientes.nombre,clientes.apellido) as cliente",
 			"clientes.direccion as direccion",
@@ -76,6 +77,7 @@ class ConsultasController extends \BaseController {
 			);
 
 		$Searchable = array(
+			"clientes.dpi",
 			"clientes.nombre",
 			"clientes.apellido",
 			"clientes.direccion_actual",
@@ -104,6 +106,7 @@ class ConsultasController extends \BaseController {
 		$table = 'pagos';
 
 		$columns = array(
+			"clientes.dpi as dpi",
 			"CONCAT_WS(' ',users.nombre,users.apellido) as usuario",
 			"CONCAT_WS(' ',clientes.nombre,clientes.apellido) as cliente",
 			"clientes.direccion_actual as direccion",
@@ -116,6 +119,7 @@ class ConsultasController extends \BaseController {
 			);
 
 		$Searchable = array(
+			"clientes.dpi",
 			"clientes.nombre",
 			"clientes.apellido",
 			"clientes.direccion",
