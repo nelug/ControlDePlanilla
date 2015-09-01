@@ -32,7 +32,7 @@
 			<td> {{ $cliente->direccion_actual}} </td>
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
-			<td style="text-align: left;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
+			<td style="text-align: center;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
 			<td></td>
 		</tr>
 		<?php $total = $total + $cliente->saldo ?>
