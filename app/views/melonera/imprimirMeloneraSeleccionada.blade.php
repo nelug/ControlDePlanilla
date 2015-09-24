@@ -23,7 +23,7 @@
 		@foreach(@$data->clientes as $cliente)
 		@if($cliente->saldo > 0 )
 		<?php $dias = DB::table('pagos')
-		->select(DB::raw("DATEDIFF(current_date,max(created_at)) as dias"))
+		->select(DB::raw("DATEDIFF(max(created_at),created_at) as dias"))
 		->where('cliente_id','=', $cliente->id)->first(); 
 		?>
 		<tr class="imprimirMelonera">
@@ -32,7 +32,7 @@
 			<td> {{ $cliente->direccion_actual}} </td>
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
-			<td style="text-align: right;">{{(@$dia->dias == null)? '0':@$dia->dias;}}</td>
+			<td style="text-align: right;">{{(@$dias->dias == null)? '0':@$dias->dias;}}</td>
 			<td></td>
 		</tr>
 		<?php $total = $total + $cliente->saldo ?>
