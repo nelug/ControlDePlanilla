@@ -217,3 +217,7 @@ table.dataTable tfoot th, table.dataTable thead th {
 .table thead tr th {
     border-width: 1px 1px 7px;
 }
+
+tbody tr .pagos{
+  font-size: 11px !important
+}
