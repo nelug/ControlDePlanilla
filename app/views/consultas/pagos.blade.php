@@ -21,7 +21,7 @@ $(document).ready(function()
         "fnDrawCallback": function( oSettings ) {
             $( ".DTTT" ).html("");
         },
-
+        "order": [9, 'desc'],
         "bJQueryUI": false,
         "bProcessing": true,
         "bServerSide": true,

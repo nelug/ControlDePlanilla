@@ -19,7 +19,7 @@ $(document).ready(function()
         "fnDrawCallback": function( oSettings ) {
             $( ".DTTT" ).html("");
         },
-        "order": [7, 'asc'],
+        "order": [7, 'desc'],
         "bJQueryUI": false,
         "bProcessing": true,
         "bServerSide": true,
