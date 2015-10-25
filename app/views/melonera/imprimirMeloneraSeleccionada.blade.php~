@@ -39,10 +39,10 @@
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
 			<td style="text-align: right;">
-				{{(@$dias->dias == null)? '0':@$dias->dias;}}
+				P:{{(@$dias->dias == null)? '0':@$dias->dias;}}
 			</td>
 			<td style="text-align: right;">
-				{{(@$diasV->dias == null)? '0':@$diasV->dias;}}
+				V:{{(@$diasV->dias == null)? '0':@$diasV->dias;}}
 			</td>
 			<td></td>
 		</tr>
