@@ -12,3 +12,26 @@ function crear_cliente() {
         $('.bs-modal').modal('show');
     });
 }
+
+function _actualizarFoto(e){
+    $id  = $('.dataTable tbody .row_selected').attr('id');
+    $url = $('.dataTable').attr('url') + 'actualizarFoto';
+
+    $.ajax({
+        type: "POST",
+        url: $url,
+        data: {cliente_id: $id},
+        success: function (data) {
+            if(data.success == true ){
+                $('.modal-body').html(data.view);
+                $('.modal-title').text( 'Actualizar Foto al  ' + $('.dataTable').attr('title') );
+                return $('.bs-modal').modal('show');
+            }
+            msg.warning(data, 'Advertencia!');
+
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+}

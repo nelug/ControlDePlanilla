@@ -37,10 +37,10 @@ class ClienteController extends \BaseController {
 	    	$cliente->estado = Input::get('estado');
 	    	$cliente->bloqueado = Input::get('bloqueado');
 	    	$cliente->sanjuan = Input::get('sanjuan');
-			
+
 			if ($cliente->save())
 		    	return 'success';
-	
+
 			return $cliente->errors();
     	}
 
@@ -54,7 +54,7 @@ class ClienteController extends \BaseController {
     	if (Input::has('_token'))
         {
         	$cliente = Cliente::find(Input::get('cliente_id'));
-        	if (($cliente->saldo + Input::get('monto')) > 1000) 
+        	if (($cliente->saldo + Input::get('monto')) > 1000)
         		return 'No se puede vender porque su deuda pasaria los mil con la venta....';
 
         	$venta = new Venta;
@@ -87,12 +87,12 @@ class ClienteController extends \BaseController {
 
     	$cliente = Cliente::find(Input::get('id'));
 
-        if ($cliente->estado == 0) 
+        if ($cliente->estado == 0)
             return 'no se le puede vender a este cliente porque esta Inactivo';
 
-        else if ($cliente->bloqueado == 1) 
-            return 'no se le puede vender a este cliente porque esta Bloqueado';    
-        
+        else if ($cliente->bloqueado == 1)
+            return 'no se le puede vender a este cliente porque esta Bloqueado';
+
     	$dias = DB::table('pagos')->select(DB::raw("monto ,DATEDIFF(current_date,max(created_at)) as dias"))
     	->where('cliente_id','=', Input::get('id'))->first();
 
@@ -102,7 +102,7 @@ class ClienteController extends \BaseController {
         $dia = $dias->dias;
     	$dias_v = $dias->dias;
     	if ($cliente->saldo <= 0)
-    		$dia = 0 ;  
+    		$dia = 0 ;
     	return Response::json(array(
             'success' => true,
             'view'   => View::make('cliente.vender', compact('cliente' , 'dia' ,'dias_v'))->render()
@@ -116,7 +116,7 @@ class ClienteController extends \BaseController {
     	if (Input::has('_token'))
         {
         	$cliente = Cliente::find(Input::get('cliente_id'));
-        	if (($cliente->saldo - Input::get('monto'))  < 0) 
+        	if (($cliente->saldo - Input::get('monto'))  < 0)
         		return 'No se puede ingresar mas que la deuda....';
 
         	$saldo = $cliente->saldo;
@@ -148,8 +148,8 @@ class ClienteController extends \BaseController {
     	$dia = $dias->dias;
         $dias_v = $dias->dias;
     	if ($cliente->saldo <= 0)
-    		$dia = 0 ;  
-    		
+    		$dia = 0 ;
+
 
     	return View::make('cliente.abonar', compact('cliente','dia','dias_v'));
     }
@@ -167,5 +167,26 @@ class ClienteController extends \BaseController {
 		$fp = fopen($url.'.jpg', 'w');
 		fwrite($fp, $unencoded);
 		fclose($fp);
+	}
+
+	public function actualizarFoto()
+	{
+		if (Input::has('_token'))
+        {
+			$imagen = Input::get('imgBase64');
+			if($imagen != "")
+				$this->Guardar_Foto($imagen);
+
+			return "success";
+		}
+
+		$cliente = Cliente::find(Input::get('cliente_id'));
+
+		return Response::json(array(
+            'success' => true,
+            'view'   => View::make('cliente.actualizarFoto', compact('cliente'))->render()
+        ));
+
+
 	}
 }

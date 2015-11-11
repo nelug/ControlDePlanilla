@@ -23,7 +23,7 @@ $(document).ready(function()
         "bServerSide": true,
         "sAjaxSource": "user/consultas/cuadrillas_dt"
     });
-
+    $('#example').addClass('with100');
 });
 
 </script>

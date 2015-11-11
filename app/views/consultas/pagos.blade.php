@@ -27,7 +27,7 @@ $(document).ready(function()
         "bServerSide": true,
         "sAjaxSource": "user/consultas/pagos_dt"
     });
-
+    $('#example').addClass('with100');
 });
 
 </script>

@@ -25,7 +25,7 @@ $(document).ready(function()
         "bServerSide": true,
         "sAjaxSource": "user/consultas/ventas_dt"
     });
-
+    $('#example').addClass('with100');
 });
 
 </script>

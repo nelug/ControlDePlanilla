@@ -8,7 +8,7 @@ $(function() {
     $(document).on("click", "#_abonar", function(){ _abonar(this); });
     $(document).on("click", "#_vender", function(){ _vender(this); });
 });
- 
+
 
 $( document ).ajaxSend(function() {
   $('.loader').show();
@@ -30,7 +30,7 @@ function proccess_table($v) {
     $("#iSearch").unbind();
     clean_panel();
 
-    var table = '<table class="dt-table table-striped table-theme" id="example"><tbody style="background: #ffffff;">';
+    var table = '<table class="dt-table table-striped table-theme" id="example"><tbody style="background: #ffffff; width:100% !importat;">';
     table += '<tr>';
     table += '<td style="font-size: 14px; color:#1b7be2;" colspan="7" class="dataTables_empty">Cargando datos del servidor...</td>';
     table += '</tr>';
@@ -43,7 +43,7 @@ function proccess_table($v) {
         $("#iSearch").focus();
         $('#example_length').prependTo("#table_length");
         $('.dt-container').show();
-        
+
         oTable = $('#example').dataTable();
         $('#iSearch').keyup(function(){
             oTable.fnFilter( $(this).val() );
@@ -54,7 +54,7 @@ function proccess_table($v) {
 
 $(document).on("click", "#example tbody tr", function() {
 
-    if ( $( this ).hasClass( "row_selected" ) ) 
+    if ( $( this ).hasClass( "row_selected" ) )
     {
         $("tr").removeClass("row_selected");
         $('.btn_edit').prop("disabled", true);
@@ -81,7 +81,7 @@ $(document).on('click', '.wclose', function(e) {
 
 
 $(document).on('click', '#sidebar-left .sidebar-menu ul li', function(e) {
-    
+
     e.preventDefault();
 
     $( "li" ).removeClass( "active" )
@@ -94,7 +94,7 @@ $(document).on('click', '#sidebar-left .sidebar-menu ul li', function(e) {
 
 
 $(document).on('click', '#sidebar-left .sidebar-menu .home', function(e) {
-    
+
     e.preventDefault();
 
     $( "li" ).removeClass( "active" )
@@ -225,7 +225,7 @@ function _delete() {
 
                         msg.success('Dato eliminado', 'Listo!')
                         oTable.fnDraw();
-                        
+
                     } else {
 
                         msg.warning('Hubo un erro al tratar de eliminar', 'Advertencia!')

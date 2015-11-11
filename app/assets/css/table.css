@@ -100,11 +100,11 @@ th, td {
 }
 
 tr:nth-child(even)  {
-	background: url(../images/noise-diagonal.png);	
+	background: url(../images/noise-diagonal.png);
 }
 
 tr:nth-child(odd) td {
-	background: #f1f1f1 url(../images/noise-diagonal.png);	
+	background: #f1f1f1 url(../images/noise-diagonal.png);
 }
 
 .btn_table {
@@ -126,7 +126,7 @@ tr:nth-child(odd) td {
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    position: absolute;  
+    position: absolute;
 }
 
 .btn-group, .btn-group-vertical {
@@ -220,4 +220,8 @@ table.dataTable tfoot th, table.dataTable thead th {
 
 tbody tr .pagos{
   font-size: 11px !important
+}
+
+.with100 {
+    width: 100% !important;
 }

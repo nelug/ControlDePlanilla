@@ -22,6 +22,7 @@ $(document).ready(function()
             $( ".DTTT" ).append( '<button id="_status" class="btn btngrey btn_edit" disabled>Estado</button>' );
             $( ".DTTT" ).append( '<button id="_abonar" class="btn btngrey btn_edit" disabled>Abonar</button>' );
             $( ".DTTT" ).append( '<button id="_vender" class="btn btngrey btn_edit" disabled>Vender</button>' );
+            $( ".DTTT" ).append( '<button onclick="_actualizarFoto(this)" class="btn btngrey btn_edit" disabled>Foto</button>' );
         },
 
         "bJQueryUI": false,
@@ -31,5 +32,7 @@ $(document).ready(function()
     });
 
 });
+
+$('#example').addClass('with100');
 
 </script>

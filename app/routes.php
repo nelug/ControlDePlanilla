@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 Route::get('/', 'HomeController@index');
 Route::get('logIn', 'HomeController@login');
@@ -33,6 +33,7 @@ Route::group(array('prefix' => 'user'), function()
         Route::post('vender', 'ClienteController@vender'   );
         Route::post('delete', 'ClienteController@delete'   );
         Route::get('camara' , 'ClienteController@camara'   );
+        Route::post('actualizarFoto' , 'ClienteController@actualizarFoto'   );
     });
 
     Route::group(array('prefix' => 'consultas'), function()
@@ -91,4 +92,3 @@ Route::get('test',  function(){
     $user->password = 'admin';
     $user->save();
 });
-
