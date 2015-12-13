@@ -66,6 +66,7 @@
                         <ul>
                             <li><a href="javascript:void(0);" id="crear_melonera">Crear Melonera</a></li>
                             <li><a href="javascript:void(0);" onclick="imprimirMelonera()">Imprimir Melonera</a></li>
+                            <li><a href="javascript:void(0);" onclick="imprimirMeloneraDeudores()">Imprimir Deudores</a></li>
                         </ul>
                     </li>
 

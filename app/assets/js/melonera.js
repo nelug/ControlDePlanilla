@@ -35,3 +35,26 @@ function imprimirMeloneraSeleccionada()
     	$(".imprimirContenedor").hide();
     });
 }
+
+function imprimirMeloneraDeudores()
+{
+	var url = 'user/melonera/imprimirMeloneraDeudores';
+    $.get( url, function( data ) {
+        $('.modal-body').html(data);
+        $('.modal-title').html( 'Imprimir Deudores');
+        $('.bs-modal').modal('show');
+    });
+}
+
+function imprimirDeudoresSeleccionados()
+{
+	var descripcion = $('#textoImprimirDeudores').val();
+	var url = 'user/melonera/imprimirDeudoresSeleccionados?descripcion='+descripcion;
+
+    $.get( url, function( data ) {
+    	$(".imprimirContenedor").html(data);
+    	$(".imprimirContenedor").show();
+         $.print(".imprimirContenedor");
+    	$(".imprimirContenedor").hide();
+    });
+}
