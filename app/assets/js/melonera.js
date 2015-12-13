@@ -48,8 +48,8 @@ function imprimirMeloneraDeudores()
 
 function imprimirDeudoresSeleccionados()
 {
-	var descripcion = $('#textoImprimirDeudores').val();
-	var url = 'user/melonera/imprimirDeudoresSeleccionados?descripcion='+descripcion;
+	var $direccion = $('#textoImprimirDeudores').val();
+	var url = 'user/melonera/imprimirDeudoresSeleccionados?direccion='+$direccion;
 
     $.get( url, function( data ) {
     	$(".imprimirContenedor").html(data);
