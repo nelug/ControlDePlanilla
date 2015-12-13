@@ -25,7 +25,7 @@ class MeloneraController extends \BaseController {
 
 		$cuadrilla = Cuadrilla::with('meloneras','clientes')
 		->join('clientes','cuadrilla_id','=','cuadrillas.id')
-		->where("clientes.direccion_actual", "LIKE", "%{$direccion}%")
+		->where("clientes.direccion_actual", "LIKE", "%{$direccion}")
 		->whereRaw('(select DATEDIFF(current_date,max(created_at)) from pagos where cliente_id = clientes.id) >= 30')
 		->orderBy('correlativo')->get();
 
