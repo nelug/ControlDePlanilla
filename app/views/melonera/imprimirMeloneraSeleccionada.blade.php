@@ -5,14 +5,14 @@
 @if(count($verificar) > 0)
 <?php $total = 0; ?>
 <div align="center">
-	<h3> {{ $data->cuadrilla }} {{ $data->caporal }} </h3> 
-</div> 
+	<h3> {{ $data->cuadrilla }} {{ $data->caporal }} </h3>
+</div>
 <table class="table">
 	<thead>
 		<tr>
 			<th width="14%" style="text-align: center;">DPI</th>
 			<th width="23%" style="text-align: center;">Nombre</th>
-			<th width="23%" style="text-align: center;">Direccion</th>
+			<th width="23%" style="text-align: center;">Direccion Actual</th>
 			<th width="9%" style="text-align: center;">Telefono</th>
 			<th width="10%" style="text-align: center;">Saldo</th>
 			<th width="5%" style="text-align: center;">D.P</th>
@@ -23,14 +23,14 @@
 	<tbody>
 		@foreach(@$data->clientes as $cliente)
 		@if($cliente->saldo > 0 )
-		<?php 
+		<?php
 		$dias = DB::table('pagos')
 		->select(DB::raw("DATEDIFF(current_date,max(created_at)) as dias"))
-		->where('cliente_id','=', $cliente->id)->first(); 
+		->where('cliente_id','=', $cliente->id)->first();
 		$diasV = DB::table('ventas')
 		->select(DB::raw("DATEDIFF(current_date,max(created_at)) as dias"))
-		->where('cliente_id','=', $cliente->id)->first(); 
-		
+		->where('cliente_id','=', $cliente->id)->first();
+
 		?>
 		<tr class="imprimirMelonera">
 			<td> {{ $cliente->dpi }} </td>
@@ -74,8 +74,8 @@
 	}
 
 	@media print{
-		div.saltopagina{ 
-			display:block; 
+		div.saltopagina{
+			display:block;
 			page-break-before:always;
 		}
 	}
