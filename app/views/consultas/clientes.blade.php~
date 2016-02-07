@@ -12,8 +12,8 @@ $(document).ready(function()
             {"sClass": "width45",              "sTitle": "Direccion", "aTargets": [3]},
             {"sClass": "width5" ,              "sTitle": "Pago",      "aTargets": [4]},
             {"sClass": "width5" ,              "sTitle": "Venta",     "aTargets": [5]},
-            {"sClass": "align_right width5",   "sTitle": "Cuadrilla", "aTargets": [6]},
-            {"sClass": "align_right width10",  "sTitle": "Deuda",     "aTargets": [7]},
+            {"sClass": "align_right width5",  "sTitle": "Cuadrilla", "aTargets": [4]},
+            {"sClass": "align_right width10",  "sTitle": "Deuda",     "aTargets": [5]},
         ],
 
         "fnDrawCallback": function( oSettings ) {
