@@ -8,7 +8,7 @@ class CuadrillaValidator extends ValidatorAssistant
 
         'cuadrilla' =>  'required|unique:cuadrillas,cuadrilla, {id}',
         'correlativo' =>  'required|min:1',
-        'caporal' =>  'required|alpha_spaces|min:5',
+        'caporal' =>  'required|min:5',
         'melonera_id' =>  'required',
         'user_id'    =>  'required'
     );

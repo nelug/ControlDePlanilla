@@ -1,3 +1,4 @@
+@if(count($ventas))
 <table width="100%" class="table table-theme">
   <thead>
     <tr>
@@ -16,3 +17,4 @@
     @endforeach
   </tbody>
 </table>
+@endif
