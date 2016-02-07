@@ -62,6 +62,8 @@ class ClienteController extends \BaseController {
         	$venta->cliente_id = Input::get('cliente_id');
         	$venta->monto = Input::get('monto');
 
+					DB::connection('bazar')->table('ventas')->whereId(Input::get('venta_id'))
+					->update(array('total' => Input::get('monto'), 'completed' => 1));
             if ($cliente->saldo <= 0.00) {
                 $pago = new Pago;
                 $pago->user_id = Auth::user()->id;

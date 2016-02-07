@@ -1,4 +1,4 @@
-{{Form::open(array('data-remote-status',"data-success"=>"Cliente Actaulizado", 'class'=>"form-horizontal all"))}} 
+{{Form::open(array('data-remote-status',"data-success"=>"Cliente Actaulizado", 'class'=>"form-horizontal all"))}}
 {{ Form::hidden('cliente_id', $cliente->id ) }}
 {{ Form::hidden('user_id', Auth::user()->id ) }}
 
@@ -37,7 +37,7 @@
 </div>
 <hr>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6 montoEnviar">
 		{{ Form::_text('monto') }}
 	</div>
 	<div class="col-md-6">
@@ -46,5 +46,25 @@
 		<strong>Dias de la ultima Venta : {{(@$dia_v == null)? '0':@$dia_v;}}</strong>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-6 ventasSinFinalizar">
+		<button type="button" name="button" class="btn btn-theme" onclick="CargarVentasEnviadas()">Utilizar Venta</button>
+	</div>
+</div>
+
 {{ Form::_submit('Enviar') }}
 {{ Form::close() }}
+
+<script type="text/javascript">
+function CargarVentasEnviadas(){
+	$.get( '/ventasSinFinalizar', function( data ) {
+			$('.ventasSinFinalizar').html(data);
+	});
+}
+
+function asignarVenta(venta_id, monto){
+	$(".montoEnviar").html('<input type="hidden" name="monto" value="'+monto+'">'+
+	'<input type="hidden" name="venta_id" value="'+venta_id+'"> Monto: <strong>'+ monto+'</strong>');
+}
+</script>
