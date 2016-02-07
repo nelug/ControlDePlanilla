@@ -3,9 +3,7 @@ $(function() {
 });
 
 function crear_cliente() {
-
     var url = 'user/cliente/create';
-
     $.get( url, function( data ) {
         $('.modal-body').html(data);
         $('.modal-title').html( 'Crear Cliente');
@@ -16,7 +14,6 @@ function crear_cliente() {
 function _actualizarFoto(e){
     $id  = $('.dataTable tbody .row_selected').attr('id');
     $url = $('.dataTable').attr('url') + 'actualizarFoto';
-
     $.ajax({
         type: "POST",
         url: $url,
@@ -28,7 +25,6 @@ function _actualizarFoto(e){
                 return $('.bs-modal').modal('show');
             }
             msg.warning(data, 'Advertencia!');
-
         },
         error: function (request, status, error) {
             alert(request.responseText);

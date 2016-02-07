@@ -88,9 +88,18 @@ Route::group(array('prefix' => 'owner'), function()
     });
 });
 
+Route::get('ventasSinFinalizar',  function(){
+  $ventas = DB::connection('bazar')->table('ventas')
+  ->select(DB::raw('ventas.id AS id'), DB::raw('sum(precio * cantidad) as total'))
+  ->join('detalle_ventas', 'venta_id', '=', 'ventas.id')
+  ->whereCajaId(1)->whereCompleted(0)->get();
+
+  return View::make('cliente.ventasSinFinalizar', compact('ventas'))->render();
+});
 
 Route::get('test',  function(){
-    $user = User::find(1);
+  /*  $user = User::find(1);
     $user->password = 'admin';
     $user->save();
+    */
 });

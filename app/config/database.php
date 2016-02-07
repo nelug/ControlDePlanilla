@@ -63,6 +63,17 @@ return array(
 			'prefix'    => '',
 		),
 
+		'bazar' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'bazar',
+			'username'  => 'root',
+			'password'  => 'admin',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_spanish_ci',
+			'prefix'    => '',
+		),
+
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
