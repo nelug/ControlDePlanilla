@@ -54,6 +54,9 @@ class ClienteController extends \BaseController {
     	if (Input::has('_token'))
         {
         	$cliente = Cliente::find(Input::get('cliente_id'));
+
+		if($cliente->bloqueado == 1)
+			return "No se puede vender porque el cliente esta bloqueado..!";	
         	if (($cliente->saldo + Input::get('monto')) > 1000)
         		return 'No se puede vender porque su deuda pasaria los mil con la venta....';
 
@@ -78,6 +81,7 @@ class ClienteController extends \BaseController {
         	if ($venta->save())
         	{
 		    	$cliente->saldo = $cliente->saldo + Input::get('monto');
+			$cliente->bloqueado = 1;
 
 				if ($cliente->save())
 			    	return 'success';
@@ -132,7 +136,10 @@ class ClienteController extends \BaseController {
 
         	if ($pago->save())
         	{
-		    	$cliente->saldo = $cliente->saldo - Input::get('monto');
+			if( ($cliente->saldo - Input::get('monto'))  <= 0)
+				$cliente->bloqueado = 0;
+
+		    	$cliente->saldo = $cliente->saldo - Input::get('monto');			
 
 				if ($cliente->save())
 			    	return 'success';
