@@ -55,12 +55,12 @@ $(document).on('submit', 'form[data-remote-status]', function(e) {
                 msg.success(form.data('success'), 'Listo!');
                 $('.bs-modal').modal('hide');
                 
-                /*if($('input[name=monto]', this).val() > 0) {
+                if($('input[name=monto]', this).val() > 0) {
 					if(data.venta_id > 0)
 						//imprimirVenta(data.id, data.venta_id);
 					else
 					    //imprimirVenta(data.id, 0);
-				}*/
+				}
             }
             else
                 msg.warning(data, 'Advertencia!');

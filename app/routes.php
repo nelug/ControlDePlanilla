@@ -5,6 +5,8 @@ Route::get('logIn', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
 Route::post('index', 'HomeController@validate');
 
+Route::get('imprimirVenta', 'ClienteController@imprimirVenta');
+
 Route::group(array('prefix' => 'user'), function()
 {
     Route::group(array('prefix' => 'melonera'), function()

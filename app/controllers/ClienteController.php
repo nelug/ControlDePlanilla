@@ -39,7 +39,7 @@ class ClienteController extends \BaseController {
 	    	$cliente->sanjuan = Input::get('sanjuan');
 
 			if ($cliente->save())
-		    	return 'success';
+		    	return Response::json(array('success' => true));
 
 			return $cliente->errors();
     	}
@@ -64,9 +64,11 @@ class ClienteController extends \BaseController {
         	$venta->user_id = Auth::user()->id;
         	$venta->cliente_id = Input::get('cliente_id');
         	$venta->monto = Input::get('monto');
+        	$venta->monto = Input::get('descripcion');
 
-					DB::connection('bazar')->table('ventas')->whereId(Input::get('venta_id'))
-					->update(array('total' => Input::get('monto'), 'completed' => 1, 'dpi' => $cliente->dpi, 'dpi_id' => $cliente->id));
+			DB::connection('bazar')->table('ventas')->whereId(Input::get('venta_id'))
+			->update(array('total' => Input::get('monto'), 'completed' => 1, 'dpi' => $cliente->dpi, 'dpi_id' => $cliente->id));
+           
             if ($cliente->saldo <= 0.00) {
                 $pago = new Pago;
                 $pago->user_id = Auth::user()->id;
@@ -81,13 +83,17 @@ class ClienteController extends \BaseController {
         	if ($venta->save())
         	{
 		    	$cliente->saldo = $cliente->saldo + Input::get('monto');
-			$cliente->bloqueado = 1;
+			    $cliente->bloqueado = 1;
 
 				if ($cliente->save())
-			    	return 'success';
+			    	return Response::json(array(
+						'success' => true, 
+						'id' => $venta->id,
+						'venta_id'=> Input::get('venta_id')
+					));
 		    }
 
-		    return 'success';
+		    return Response::json(array('success' => true));
     	}
 
 
@@ -142,10 +148,10 @@ class ClienteController extends \BaseController {
 		    	$cliente->saldo = $cliente->saldo - Input::get('monto');			
 
 				if ($cliente->save())
-			    	return 'success';
+			    	return Response::json(array('success' => true));
 		    }
 
-		    return 'success';
+		    return Response::json(array('success' => true));
     	}
 
     	$cliente = Cliente::find(Input::get('id'));
@@ -198,4 +204,10 @@ class ClienteController extends \BaseController {
 
 
 	}
+	
+	
+	public function imprimirVenta() {
+	     $venta = Venta::with('clientes')->find(Input::get('id'));
+		return View::make('cliente.imprimirVenta', compact('venta'))->render();
+	} 
 }
