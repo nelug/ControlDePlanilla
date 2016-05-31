@@ -58,7 +58,7 @@ $(document).on('submit', 'form[data-remote-status]', function(e) {
                if(data.venta_id > 0){
                   imprimirVenta(data.id, data.venta_id);
                }
-               else {
+               else if(data.id > 0){
                   imprimirVenta(data.id, 0);
                }
             }
