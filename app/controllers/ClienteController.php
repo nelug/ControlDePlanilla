@@ -56,7 +56,7 @@ class ClienteController extends \BaseController {
         	$cliente = Cliente::find(Input::get('cliente_id'));
 
 		if($cliente->bloqueado == 1)
-			return "No se puede vender porque el cliente esta bloqueado..!";	
+			return "No se puede vender porque el cliente esta bloqueado..!";
         	if (($cliente->saldo + Input::get('monto')) > 1000)
         		return 'No se puede vender porque su deuda pasaria los mil con la venta....';
 
@@ -64,11 +64,11 @@ class ClienteController extends \BaseController {
         	$venta->user_id = Auth::user()->id;
         	$venta->cliente_id = Input::get('cliente_id');
         	$venta->monto = Input::get('monto');
-        	$venta->monto = Input::get('descripcion');
+        	$venta->descripcion = Input::get('descripcion');
 
-			DB::connection('bazar')->table('ventas')->whereId(Input::get('venta_id'))
-			->update(array('total' => Input::get('monto'), 'completed' => 1, 'dpi' => $cliente->dpi, 'dpi_id' => $cliente->id));
-           
+		DB::connection('bazar')->table('ventas')->whereId(Input::get('venta_id'))
+		->update(array('total' => Input::get('monto'), 'completed' => 1, 'dpi' => $cliente->dpi, 'dpi_id' => $cliente->id));
+
             if ($cliente->saldo <= 0.00) {
                 $pago = new Pago;
                 $pago->user_id = Auth::user()->id;
@@ -87,7 +87,7 @@ class ClienteController extends \BaseController {
 
 				if ($cliente->save())
 			    	return Response::json(array(
-						'success' => true, 
+						'success' => true,
 						'id' => $venta->id,
 						'venta_id'=> Input::get('venta_id')
 					));
@@ -145,7 +145,7 @@ class ClienteController extends \BaseController {
 			if( ($cliente->saldo - Input::get('monto'))  <= 0)
 				$cliente->bloqueado = 0;
 
-		    	$cliente->saldo = $cliente->saldo - Input::get('monto');			
+		    	$cliente->saldo = $cliente->saldo - Input::get('monto');
 
 				if ($cliente->save())
 			    	return Response::json(array('success' => true));
@@ -204,10 +204,14 @@ class ClienteController extends \BaseController {
 
 
 	}
-	
-	
+
+
 	public function imprimirVenta() {
-	     $venta = Venta::with('clientes')->find(Input::get('id'));
-		return View::make('cliente.imprimirVenta', compact('venta'))->render();
-	} 
+	     $venta = Venta::find(Input::get('id'));
+	     $cliente = Cliente::find($venta->cliente_id);
+		  $cuadrilla = Cuadrilla::find($cliente->cuadrilla_id);
+		  $melonera = Melonera::find($cuadrilla->melonera_id);
+
+		return View::make('cliente.imprimirVenta', compact('venta', 'cliente', 'cuadrilla', 'melonera'))->render();
+	}
 }

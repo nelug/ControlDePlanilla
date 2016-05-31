@@ -1,13 +1,88 @@
 <table width="100%">
 	<tr>
-		<td>
-			DPI: {{ $venta->cliente->id }}
+		<td colspan="3">
+			DPI: {{ $cliente->dpi }}
 		</td>
-		<td>
-			NOMBRE: 
+	</tr>
+	<tr>
+		<td colspan="3">
+			NOMBRE: {{ $cliente->nombre .' '. $cliente->apellido }}
 		</td>
-		<td>
-			DIRECCION: {{ $venta->monto }}
+	</tr>
+	<tr>
+		<td colspan="3">
+			CUADRILLA: {{ $cuadrilla->cuadrilla }}
 		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			DIRECCION: {{ $cliente->direccion_actual }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			MELONERA: {{ $melonera->melonera }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			CAPORAL: {{ $cuadrilla->caporal }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			DESCRIPCION: {{ $venta->descripcion }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="height: 80px;">
+		</td>
+	</tr>
+</table>
+
+<table width="100%">
+	<tr>
+		<td colspan="3">
+			DPI: {{ $cliente->dpi }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			NOMBRE: {{ $cliente->nombre .' '. $cliente->apellido }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			CUADRILLA: {{ $cuadrilla->cuadrilla }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			DIRECCION: {{ $cliente->direccion_actual }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			MELONERA: {{ $melonera->melonera }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			CAPORAL: {{ $cuadrilla->caporal }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			DESCRIPCION: {{ $venta->descripcion }}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="height: 80px;">
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>F.___________________________________</td>
+		<td></td>
 	</tr>
 </table>
