@@ -16,7 +16,7 @@
 </div>
 <hr>
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@if($cliente->estado == 1)
 		<div class="radio">
 			<label> <input type="radio" name="estado" value="1" checked> Activo </label>
@@ -33,7 +33,7 @@
 		</div>
 		@endif
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@if($cliente->bloqueado == 1)
 		<div class="radio">
 			<label> <input type="radio" name="bloqueado" value="1" checked> Bloqueado </label>
@@ -51,7 +51,7 @@
 		@endif
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@if($cliente->sanjuan == 1)
 		<div class="radio">
 			<label> <input type="radio" name="sanjuan" value="1" checked> San Juan </label>
@@ -65,6 +65,23 @@
 		</div>
 		<div class="radio">
 			<label> <input type="radio" name="sanjuan" value="0" checked> No San Juan </label>
+		</div>
+		@endif
+	</div>
+	<div class="col-md-3">
+		@if($cliente->vip == 1)
+		<div class="radio">
+			<label> <input type="radio" name="vip" value="1" checked> VIP </label>
+		</div>
+		<div class="radio">
+			<label> <input type="radio" name="vip" value="0"> No VIP </label>
+		</div>
+		@else
+		<div class="radio">
+			<label> <input type="radio" name="vip" value="1" > VIP </label>
+		</div>
+		<div class="radio">
+			<label> <input type="radio" name="vip" value="0" checked> No VIP</label>
 		</div>
 		@endif
 	</div>

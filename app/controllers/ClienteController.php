@@ -37,6 +37,7 @@ class ClienteController extends \BaseController {
 	    	$cliente->estado = Input::get('estado');
 	    	$cliente->bloqueado = Input::get('bloqueado');
 	    	$cliente->sanjuan = Input::get('sanjuan');
+			$cliente->vip = Input::get('vip');
 
 			if ($cliente->save())
 		    	return Response::json(array('success' => true));
@@ -54,11 +55,12 @@ class ClienteController extends \BaseController {
     	if (Input::has('_token'))
         {
         	$cliente = Cliente::find(Input::get('cliente_id'));
-
-		if($cliente->bloqueado == 1)
+		
+		if($cliente->bloqueado == 1 && $cliente->vip == 0)
 			return "No se puede vender porque el cliente esta bloqueado..!";
-        	if (($cliente->saldo + Input::get('monto')) > 1000)
-        		return 'No se puede vender porque su deuda pasaria los mil con la venta....';
+        
+        if (($cliente->saldo + Input::get('monto')) > 1000 && $cliente->vip == 0)
+        	return 'No se puede vender porque su deuda pasaria los mil con la venta....';
 
         	$venta = new Venta;
         	$venta->user_id = Auth::user()->id;
@@ -102,7 +104,7 @@ class ClienteController extends \BaseController {
         if ($cliente->estado == 0)
             return 'no se le puede vender a este cliente porque esta Inactivo';
 
-        else if ($cliente->bloqueado == 1)
+        else if ($cliente->bloqueado == 1 && $cliente->vip == 0)
             return 'no se le puede vender a este cliente porque esta Bloqueado';
 
     	$dias = DB::table('pagos')->select(DB::raw("monto ,DATEDIFF(current_date,max(created_at)) as dias"))
