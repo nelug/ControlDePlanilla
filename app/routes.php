@@ -30,6 +30,7 @@ Route::group(array('prefix' => 'user'), function()
     Route::group(array('prefix' => 'cliente'), function()
     {
         Route::get('create' , 'ClienteController@create' );
+        Route::get('imprimirCliente' , 'ClienteController@imprimirCliente' );
         Route::post('create', 'ClienteController@create' );
         Route::post('edit'  , 'ClienteController@edit'   );
         Route::post('status', 'ClienteController@status'   );

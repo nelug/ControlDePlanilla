@@ -221,4 +221,10 @@ class ClienteController extends \BaseController {
 
 		return View::make('cliente.imprimirVenta', compact('venta', 'cliente', 'cuadrilla', 'melonera'))->render();
 	}
+	
+	public function imprimirCliente()
+	{
+		$cliente = Cliente::find(Input::get('id'));
+		return View::make('cliente.imprimirCliente', compact('cliente'))->render();
+	}
 }
