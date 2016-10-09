@@ -10,6 +10,8 @@
 		{{ Form::_select('cuadrilla_id',Cuadrilla::lists('cuadrilla','id')) }}
 
 		{{ Form::_text('dpi') }}
+		
+		{{ Form::_text('codigo') }}
 
 		{{ Form::_text('nombre') }}
 

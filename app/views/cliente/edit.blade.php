@@ -9,6 +9,8 @@
 
 {{ Form::_text('dpi',@$model->dpi) }}
 
+{{ Form::_text('codigo',@$model->codigo) }}
+
 {{ Form::_text('nombre',@$model->nombre) }}
 
 {{ Form::_text('apellido',@$model->apellido) }}
