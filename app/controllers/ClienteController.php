@@ -37,7 +37,8 @@ class ClienteController extends \BaseController {
 	    	$cliente->estado = Input::get('estado');
 	    	$cliente->bloqueado = Input::get('bloqueado');
 	    	$cliente->sanjuan = Input::get('sanjuan');
-			$cliente->vip = Input::get('vip');
+            $cliente->vip = Input::get('vip');
+			$cliente->inactivo = Input::get('inactivo');
 
 			if ($cliente->save())
 		    	return Response::json(array('success' => true));
@@ -52,6 +53,7 @@ class ClienteController extends \BaseController {
 
     public function vender()
     {
+        
     	if (Input::has('_token'))
         {
         	$cliente = Cliente::find(Input::get('cliente_id'));
@@ -101,6 +103,9 @@ class ClienteController extends \BaseController {
 
     	$cliente = Cliente::find(Input::get('id'));
 
+        if ($cliente->inactivo)
+            return 'no se le puede vender a este cliente porque esta bloquado Permanentemente';
+            
         if ($cliente->estado == 0)
             return 'no se le puede vender a este cliente porque esta Inactivo';
 

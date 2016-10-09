@@ -85,6 +85,17 @@
 		</div>
 		@endif
 	</div>
+    <div class="col-md-6" style="margin-top: 25px">
+		@if($cliente->inactivo == 1)
+		<div class="radio">
+			<label> <input type="radio" name="inactivo" value="1" checked> INACTIVO PERMANENTE </label>
+		</div>
+		@else
+		<div class="radio">
+			<label> <input type="radio" name="inactivo" value="1" > INACTIVO PERMANENTE </label>
+		</div>
+		@endif
+	</div>
 </div>
 <hr>
 {{ Form::_submit('Enviar') }}
