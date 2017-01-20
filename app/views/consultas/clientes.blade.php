@@ -10,10 +10,11 @@ $(document).ready(function()
             {"sClass": "width10",              "sTitle": "Nombre",    "aTargets": [1]},
             {"sClass": "width10",              "sTitle": "Apellido",  "aTargets": [2]},
             {"sClass": "width45",              "sTitle": "Direccion", "aTargets": [3]},
-            {"sClass": "width5" ,              "sTitle": "Pago",      "aTargets": [4]},
-            {"sClass": "width5" ,              "sTitle": "Venta",     "aTargets": [5]},
-            {"sClass": "align_right width5",   "sTitle": "Cuadrilla", "aTargets": [6]},
-            {"sClass": "align_right width10",  "sTitle": "Deuda",     "aTargets": [7]},
+            {"sClass": "width5" ,              "sTitle": "Quincena",  "aTargets": [4]},
+            {"sClass": "width5" ,              "sTitle": "Pago",      "aTargets": [5]},
+            {"sClass": "width5" ,              "sTitle": "Venta",     "aTargets": [6]},
+            {"sClass": "align_right width5",   "sTitle": "Cuadrilla", "aTargets": [7]},
+            {"sClass": "align_right width10",  "sTitle": "Deuda",     "aTargets": [8]},
         ],
 
         "fnDrawCallback": function( oSettings ) {

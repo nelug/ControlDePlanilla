@@ -15,9 +15,10 @@
 			<th width="23%" style="text-align: center;">Direccion Actual</th>
 			<th width="9%" style="text-align: center;">Telefono</th>
 			<th width="10%" style="text-align: center;">Saldo</th>
+			<th width="5%" style="text-align: center;">15NA</th>
 			<th width="5%" style="text-align: center;">D.P</th>
 			<th width="4%" style="text-align: center;">D.V</th>
-			<th width="12%" style="text-align: center;">Pago</th>
+			<th width="10%" style="text-align: center;">Pago</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,6 +39,9 @@
 			<td> {{ $cliente->direccion_actual}} </td>
 			<td> {{ $cliente->telefono}} </td>
 			<td style="text-align: right;"> {{ f_num::get($cliente->saldo) }} </td>
+			<td style="text-align: right;">
+				{{(@$dias->dias == null)? '0':intval(@$dias->dias/15);}}
+			</td>
 			<td style="text-align: right;">
 				{{(@$dias->dias == null)? '0':@$dias->dias;}}
 			</td>

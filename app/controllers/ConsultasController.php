@@ -16,6 +16,7 @@ class ConsultasController extends \BaseController {
 			"nombre",
 			"apellido",
 			"direccion_actual",
+			"FORMAT(((select DATEDIFF(current_date,max(created_at)) from pagos where cliente_id=clientes.id)/15),0) as quincena",
 			"(select DATEDIFF(current_date,max(created_at)) from pagos where cliente_id=clientes.id) as pago",
 			"(select DATEDIFF(current_date,max(created_at)) from ventas where cliente_id=clientes.id) as venta",
 			'cuadrilla',
