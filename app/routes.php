@@ -23,6 +23,8 @@ Route::group(array('prefix' => 'user'), function()
     Route::group(array('prefix' => 'cuadrilla'), function()
     {
         Route::get('create' , 'CuadrillaController@create' );
+        Route::get('bloquear'  , 'CuadrillaController@bloquear' );
+        Route::post('bloquear'  , 'CuadrillaController@bloquear' );
         Route::get('mover'  , 'CuadrillaController@mover' );
         Route::post('mover'  , 'CuadrillaController@mover' );
         Route::post('create', 'CuadrillaController@create' );

@@ -19,3 +19,13 @@ function mover_cuadrilla() {
         $('.bs-modal').modal('show');
     });
 }
+
+
+function bloquear_cuadrilla() {
+    var url = 'user/cuadrilla/bloquear';
+    $.get( url, function( data ) {
+        $('.modal-body').html(data);
+        $('.modal-title').html( 'Bloquear Cuadrilla');
+        $('.bs-modal').modal('show');
+    });
+}
