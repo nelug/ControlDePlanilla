@@ -54,6 +54,7 @@
                         </a>
                         <ul>
                             <li><a href="javascript:void(0);" id="crear_cuadrilla">Crear Cuadrilla</a></li>
+                            <li><a href="javascript:void(0);" onclick="mover_cuadrilla()">Mover Cuadrilla</a></li>
                         </ul>
                     </li>
 

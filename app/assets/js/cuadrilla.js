@@ -10,3 +10,12 @@ function crear_cuadrilla() {
         $('.bs-modal').modal('show');
     });
 }
+
+function mover_cuadrilla() {
+    var url = 'user/cuadrilla/mover';
+    $.get( url, function( data ) {
+        $('.modal-body').html(data);
+        $('.modal-title').html( 'Mover Cuadrilla');
+        $('.bs-modal').modal('show');
+    });
+}
