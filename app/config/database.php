@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'localhost:3307',
 			'database'  => 'planillas',
 			'username'  => 'root',
 			'password'  => 'admin',

@@ -32,7 +32,6 @@ function _actualizarFoto(e){
     });
 }
 
-
 function imprimirCliente(e) {
     $id  = $('.dataTable tbody .row_selected').attr('id');
     $url = $('.dataTable').attr('url') + 'imprimirCliente?id='+$id;
