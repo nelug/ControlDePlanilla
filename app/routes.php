@@ -4,6 +4,8 @@ Route::get('/', 'HomeController@index');
 Route::get('logIn', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
 Route::post('index', 'HomeController@validate');
+Route::get('cuadrillas/{id}', 'CuadrillaController@getCuadrillas');
+
 
 Route::get('imprimirVenta', 'ClienteController@imprimirVenta');
 

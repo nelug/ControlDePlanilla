@@ -43,6 +43,9 @@ class HomeController extends \BaseController {
     {
         if (!Auth::check()) return Redirect::to('logIn');
 
+        $meloneras = DB::table('meloneras')->get();
+        $cuadrillas = DB::table('cuadrillas')->get();
+
         return View::make('layouts.master', compact('clientes'));
     }
 

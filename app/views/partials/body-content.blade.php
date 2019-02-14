@@ -12,7 +12,17 @@
     </div>
   </div>
   <!-- End caledar container -->
-
+  <div class="col-md-12">
+    <div class="col-md-4">
+      {{ Form::_select('melonera_id',Melonera::lists('melonera','id')) }}
+    </div>
+    <div class="col-md-4">
+        {{ Form::_select('cuadrilla_id',[]) }}
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" onclick="buscarClientesMovil()">Buscar Clientes</button>
+    </div>
+  </div>
   <!-- FORMS -->
   <div class="form-container col-md-9">
     <div class="panel form-h form-panel shadow">
@@ -145,3 +155,42 @@
 
 </div><!-- /.body-content -->
     <!--/ End body content -->
+
+<script>
+  setTimeout(() => {
+    $('select[name=melonera_id]').change(function(){
+      getCuadrillas($(this).val())
+    });
+
+    function getCuadrillas(id){
+      fetch('cuadrillas/'+id)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        $("select[name=cuadrilla_id").html('');
+            data.forEach(element => {
+               $("select[name='cuadrilla_id'").append($('<option>', { value: element.id, text: element.cuadrilla }));
+            });
+      });
+    }
+
+    getCuadrillas($('select[name=melonera_id]').val());
+    
+    
+  }, 500);
+
+  function buscarClientesMovil()
+  { 
+    let cuadrilla_id = $("select[name=cuadrilla_id").val();
+    etch('cuadrillas/'+id)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        
+      });
+    
+  }
+</script>

@@ -2,6 +2,10 @@
 
 class CuadrillaController extends \BaseController {
 
+    public function getCuadrillas($id)
+    {
+        return DB::table('cuadrillas')->whereMeloneraId($id)->get();
+    }
     public function mover()
 	{
         if (Input::has('_token'))
