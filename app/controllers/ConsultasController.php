@@ -6,6 +6,33 @@ class ConsultasController extends \BaseController {
 	{
         return View::make('consultas.clientes');
 	}
+
+	public function clientesMovil($cuadrilla_id)
+	{
+        return View::make('consultas.clientesMovil', compact('cuadrilla_id'));
+	}
+
+	public function clientes_dt_where($cuadrilla_id)
+	{
+		$table = 'clientes';
+
+		$columns = array(
+			"nombre",
+			"apellido",
+			"FORMAT(((select DATEDIFF(current_date,max(created_at)) from pagos where cliente_id=clientes.id)/15),0) as quincena",
+			"(select DATEDIFF(current_date,max(created_at)) from pagos where cliente_id=clientes.id) as pago",
+			"(select DATEDIFF(current_date,max(created_at)) from ventas where cliente_id=clientes.id) as venta",
+			"saldo");
+
+		$Searchable = array("dpi","nombre","apellido","direccion_actual","saldo",'cuadrilla');
+
+		$join = "Join cuadrillas on (cuadrillas.id = cuadrilla_id) ";
+
+		$where = " cuadrilla_id = $cuadrilla_id ";
+
+		
+		echo TableSearch::get($table, $columns, $Searchable , $join, $where);
+	}
 	
 	public function clientes_dt()
 	{

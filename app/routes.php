@@ -49,12 +49,14 @@ Route::group(array('prefix' => 'user'), function()
 
     Route::group(array('prefix' => 'consultas'), function()
     {
-        Route::get('clientes'   , 'ConsultasController@clientes'   );
-        Route::get('meloneras'  , 'ConsultasController@meloneras'   );
-        Route::get('cuadrillas' , 'ConsultasController@cuadrillas'   );
-        Route::get('ventas'     , 'ConsultasController@ventas'     );
-        Route::get('pagos'      , 'ConsultasController@pagos'      );
+        Route::get('clientes'    , 'ConsultasController@clientes'   );
+        Route::get('clienteMovil/{cuadrilla_id}', 'ConsultasController@clientesMovil'   );
+        Route::get('meloneras'   , 'ConsultasController@meloneras'   );
+        Route::get('cuadrillas'  , 'ConsultasController@cuadrillas'   );
+        Route::get('ventas'      , 'ConsultasController@ventas'     );
+        Route::get('pagos'       , 'ConsultasController@pagos'      );
 
+        Route::get('clientes_dt_where/{cuadrilla_id}'  ,'ConsultasController@clientes_dt_where'   );
         Route::get('clientes_dt'   , 'ConsultasController@clientes_dt'   );
         Route::get('meloneras_dt'  , 'ConsultasController@meloneras_dt'   );
         Route::get('cuadrillas_dt'  , 'ConsultasController@cuadrillas_dt'   );

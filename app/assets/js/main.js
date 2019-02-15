@@ -112,6 +112,7 @@ function _create() {
         $('.modal-body').html(data);
         $('.modal-title').text( 'Crear ' + $('.dataTable').attr('title') );
         $('.bs-modal').modal('show');
+        $('.modal-backdrop').attr('style', 'z-index: 0');
     });
 }
 
@@ -130,6 +131,7 @@ function _edit() {
             $('.modal-body').html(data);
             $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
             $('.bs-modal').modal('show');
+            $('.modal-backdrop').attr('style', 'z-index: 0');
         },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -151,6 +153,7 @@ function _status() {
             $('.modal-body').html(data);
             $('.modal-title').text( 'Editar ' + $('.dataTable').attr('title') );
             $('.bs-modal').modal('show');
+            $('.modal-backdrop').attr('style', 'z-index: 0');
         },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -172,6 +175,7 @@ function _abonar() {
             $('.modal-body').html(data);
             $('.modal-title').text( 'Abonar al  ' + $('.dataTable').attr('title') );
             $('.bs-modal').modal('show');
+            $('.modal-backdrop').attr('style', 'z-index: 0');
         },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -194,7 +198,9 @@ function _vender() {
             if(data.success == true ){
                 $('.modal-body').html(data.view);
                 $('.modal-title').text( 'Vender al  ' + $('.dataTable').attr('title') );
-                return $('.bs-modal').modal('show');
+                $('.bs-modal').modal('show');
+
+                return $('.modal-backdrop').attr('style', 'z-index: 0');
             }
             msg.warning(data, 'Advertencia!');
 

@@ -20,7 +20,7 @@
         {{ Form::_select('cuadrilla_id',[]) }}
     </div>
     <div class="col-md-4">
-        <button class="btn btn-primary" onclick="buscarClientesMovil()">Buscar Clientes</button>
+        <button class="btn btn-primary buscarClienteMovil">Buscar Clientes</button>
     </div>
   </div>
   <!-- FORMS -->
@@ -157,9 +157,14 @@
     <!--/ End body content -->
 
 <script>
+  var idCuadrillaMovil;
   setTimeout(() => {
     $('select[name=melonera_id]').change(function(){
       getCuadrillas($(this).val())
+    });
+
+    $('select[name=cuadrilla_id]').change(function(){
+      idCuadrillaMovil = $(this).val();
     });
 
     function getCuadrillas(id){
@@ -169,28 +174,26 @@
       })
       .then(function(data) {
         $("select[name=cuadrilla_id").html('');
-            data.forEach(element => {
-               $("select[name='cuadrilla_id'").append($('<option>', { value: element.id, text: element.cuadrilla }));
-            });
+        data.forEach(element => {
+            $("select[name='cuadrilla_id'").append($('<option>', { value: element.id, text: element.cuadrilla }));
+        });
+
+        idCuadrillaMovil = $('select[name=cuadrilla_id]').val();
       });
     }
 
     getCuadrillas($('select[name=melonera_id]').val());
-    
+   
+    $('.buscarClienteMovil').click(function(){
+      $.get( "user/consultas/clienteMovil/"+idCuadrillaMovil, function( data ) {
+        makeTable(data, 'user/cliente/', 'Clientes');
+        $('.dt-container').attr('style', 'margin-top: 200px');
+        $('.modal-dialog').attr('style', 'margin-top: 105px;');
+
+      });
+    });
     
   }, 500);
 
-  function buscarClientesMovil()
-  { 
-    let cuadrilla_id = $("select[name=cuadrilla_id").val();
-    etch('cuadrillas/'+id)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        console.log(data);
-        
-      });
-    
-  }
+  
 </script>
