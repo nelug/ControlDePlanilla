@@ -1,8 +1,13 @@
 <?php
 
 Route::get('/', 'HomeController@index');
+
 Route::get('logIn', 'HomeController@login');
 Route::get('logout', 'HomeController@logout');
+
+Route::post('logIn', 'HomeController@login');
+Route::post('logout', 'HomeController@logout');
+
 Route::post('index', 'HomeController@validate');
 Route::get('cuadrillas/{id}', 'CuadrillaController@getCuadrillas');
 
