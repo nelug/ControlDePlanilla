@@ -28,7 +28,7 @@ class ConsultasController extends \BaseController {
 
 		$join = "Join cuadrillas on (cuadrillas.id = cuadrilla_id) ";
 
-		$where = " cuadrilla_id = $cuadrilla_id ";
+		$where = " cuadrilla_id = $cuadrilla_id and saldo > 0";
 
 		
 		echo TableSearch::get($table, $columns, $Searchable , $join, $where);
