@@ -20,6 +20,7 @@ class HomeController extends \BaseController {
         
 	    if(Auth::attempt($credentials, $rememberMe))
 	    {
+            return Redirect::to('/');
 	        return 'success';
 	    }
 
