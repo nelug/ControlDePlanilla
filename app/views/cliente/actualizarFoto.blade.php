@@ -2,10 +2,16 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-4">
 
-		<a href="javascript:void(EncenderCamara());"> <i class="fa fa-camera-retro"></i>Encender </a>
-		<a href="javascript:void(take_snapshot());"> <i class="fa fa-camera"></i>Capturar </a>
+    <a href="javascript:void(initCam());"> <i class="fa fa-camera-retro"></i>
+Encender </a>
+
+			<a href="javascript:void(take_snapshot());"> <i class="fa fa-camera"></i>
+Capturar </a>
 		<canvas id="canvas" width="320" height="240"></canvas>
-		<div id="my_camera" style="width:320px !important; height:240px  !important;"> </div>
+		<div id="my_camera" style="width:320px !important; height:240px  !important;"> 
+			<video id="video" playsinline autoplay></video>
+		</div>
+
 	</div>
 	<div class="col-md-4"></div>
 </div>
@@ -20,29 +26,44 @@
 </style>
 
 <script>
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const snap = document.getElementById("snap");
+const errorMsgElement = document.querySelector('span#errorMsg');
 
-$('#canvas').hide();
-    function EncenderCamara(){
-        Webcam.attach( '#my_camera' );
-        $('#canvas').hide();
-        $('#my_camera').show();
-    }
+const constraints = {
+  audio: true,
+  video: {
+    width: 320, height: 240
+  }
+};
 
-    function take_snapshot() {
-        Webcam.snap( function(data_uri) {
-            var canvas = document.getElementById("canvas");
-            var context = canvas.getContext("2d");
-            var img = new Image();
-            img.src = data_uri;
-            $('#foto_perfil').val(data_uri);
-            $('#canvas').delay('slow').fadeOut('slow', function() {
-                context.drawImage(img, 0, 0);
-                $('#my_camera').hide();
-                $('#canvas').fadeIn("slow", function() {
+async function initCam() {
+  try {
+	$('#canvas').hide();
+    $('#my_camera').show();
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
 
-                });
-            });
 
-        });
-    }
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+}
+
+var context = canvas.getContext('2d');
+
+function take_snapshot () {
+    context.drawImage(video, 0, 0, 320, 240);
+	$('#canvas').delay('slow').fadeOut('slow', function() {
+    	$('#my_camera').hide();
+        $('#canvas').fadeIn("slow", function() {
+			$('#foto_perfil').val(canvas.toDataURL());
+		});
+    });
+};
 </script>

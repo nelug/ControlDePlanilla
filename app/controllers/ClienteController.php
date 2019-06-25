@@ -9,6 +9,7 @@ class ClienteController extends \BaseController {
 
 	public function create()
 	{
+		
 		if (Input::has('_token'))
 		{
 			$model = new Cliente;
@@ -178,17 +179,15 @@ class ClienteController extends \BaseController {
 
 	//funcion para guardar la foto en la carpeta fotos
 
-	public function Guardar_Foto($rawData)
+	public function Guardar_Foto($data)
 	{
-		$filteredData = explode(',', $rawData);
-
-		$unencoded = base64_decode($filteredData[1]);
 		$dpi =Input::get('dpi');
-		$url = "fotos/{$dpi}";
-
-		$fp = fopen($url.'.jpg', 'w');
-		fwrite($fp, $unencoded);
-		fclose($fp);
+		$url = $_SERVER['DOCUMENT_ROOT'] . "/fotos/{$dpi}.jpg";
+		$source = fopen($data, 'r');
+		$destination = fopen($url, 'w');
+		stream_copy_to_stream($source, $destination);
+		fclose($source);
+		fclose($destination);
 	}
 
 	public function actualizarFoto()
